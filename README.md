@@ -1,7 +1,7 @@
 # Schedule1Renamer
 A product renamer for the game Schedule 1
 
-Warning:
+# Warning:
     The tool is not test for all cases!
     Plase make a backup of the saves before using it!
     Path to the saves:
