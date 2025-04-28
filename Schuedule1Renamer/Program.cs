@@ -164,8 +164,15 @@ namespace Schuedule1Renamer
             try
             {
                 string file_name = getName(name);
-                string file_path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+"\\AppData\\LocalLow\\TVGS\\" + game + "\\Saves\\SaveGame_" + save.ToString()
-                                    + "\\Products\\CreatedProducts\\" + getName(product) + ".json";
+                string file_path =
+                    Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)
+                    + "\\AppData\\LocalLow\\TVGS\\"
+                    + game
+                    + "\\Saves\\SaveGame_"
+                    + save.ToString()
+                    + "\\Products\\CreatedProducts\\"
+                    + getName(product)
+                    + ".json";
                 dynamic json = JsonConvert.DeserializeObject(File.ReadAllText(file_path));
                 json["Name"] = name;
                 if (mode == UNSAFE_MODE) json["ID"] = file_name;
@@ -173,10 +180,20 @@ namespace Schuedule1Renamer
 
                 if(mode == UNSAFE_MODE)
                 {
-                    string new_file_path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+"\\AppData\\LocalLow\\TVGS\\" + game + "\\Saves\\SaveGame_" + save.ToString()
-                                    + "\\Products\\CreatedProducts\\" + file_name + ".json";
-                    string main_file = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+"\\AppData\\LocalLow\\TVGS\\" + game + "\\Saves\\SaveGame_" +
-                        save.ToString() + "\\Products\\Products.json";
+                    string new_file_path =
+                        Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)
+                        + "\\AppData\\LocalLow\\TVGS\\"
+                        + game
+                        + "\\Saves\\SaveGame_"
+                        + save.ToString()
+                        + "\\Products\\CreatedProducts\\" + file_name + ".json";
+                    string main_file =
+                        Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)
+                        + "\\AppData\\LocalLow\\TVGS\\"
+                        + game +
+                        "\\Saves\\SaveGame_"
+                        + save.ToString()
+                        + "\\Products\\Products.json";
                     string main_file_content = File.ReadAllText(main_file).Replace(getName(product), file_name);
                     File.WriteAllText(main_file, main_file_content);
                     File.Move(file_path, new_file_path);
@@ -200,11 +217,21 @@ namespace Schuedule1Renamer
         }
         static bool checkSave(string game, int save)
         {
-            return Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+"\\AppData\\LocalLow\\TVGS\\" + game + "\\Saves\\SaveGame_" + save.ToString());
+            return Directory.Exists(
+                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)
+                + "\\AppData\\LocalLow\\TVGS\\"
+                + game
+                + "\\Saves\\SaveGame_"
+                + save.ToString()
+            );
         }
         static bool checkGame(string game)
         {
-            return Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)+"\\AppData\\LocalLow\\TVGS\\" + game);
+            return Directory.Exists(
+                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)
+                +"\\AppData\\LocalLow\\TVGS\\"
+                + game
+            );
         }
         static string getName(string name)
         {
